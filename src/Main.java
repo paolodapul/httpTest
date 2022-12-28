@@ -8,8 +8,16 @@ public class Main {
         return new HttpHandler() {
             @Override
             public void handle(HttpExchange exchange) {
+                try {
                 System.out.println("Index has been accessed!");
+                exchange.sendResponseHeaders(200, 0);
+                var res = exchange.getResponseBody();
+                var helloWorld = "Hello World!";
+                res.write(helloWorld.getBytes());
                 exchange.close();
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
             }
         };
     }
