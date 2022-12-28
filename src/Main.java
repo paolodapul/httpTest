@@ -9,6 +9,7 @@ public class Main {
             @Override
             public void handle(HttpExchange exchange) {
                 System.out.println("Index has been accessed!");
+                exchange.close();
             }
         };
     }
