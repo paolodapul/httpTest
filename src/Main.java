@@ -26,7 +26,8 @@ public class Main {
         try {
             var address = new InetSocketAddress("127.0.0.1", 3000);
             var server = HttpServer.create(address, 0);
-            server.createContext("/", Main.index());
+            var indexHandler = Main.index();
+            server.createContext("/", indexHandler);
             server.start();
             System.out.println("HTTP server is now running at " + server.getAddress());
         } catch (Exception e) {
